@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const pathLength = path.getTotalLength();
     const experiences = document.querySelectorAll('.timeline-item');
 
-    // Set the initial stroke-dasharray and stroke-dashoffset to hide the path
     path.style.strokeDasharray = pathLength;
     path.style.strokeDashoffset = pathLength;
 
@@ -11,24 +10,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
         const totalHeight = document.body.scrollHeight - windowHeight;
+    
+        const scrollPercentage = scrollY / totalHeight;
+    
+        // Fixed offset in pixels
+        const fixedOffset = 170;
+        const offsetInPathLength = (fixedOffset / path.getBoundingClientRect().height) * pathLength;
+    
 
-        // Calculate the scroll percentage with a slight lag (5%)
-        const scrollPercentage = scrollY / (totalHeight * 0.9);
-        const adjustedScrollPercentage = scrollPercentage * 0.70;  // Introduce a 5% lag
-        
-        // Calculate the stroke dash offset to create the lagging effect
-        const drawLength = pathLength * (1 - adjustedScrollPercentage);
-
-        // Ensure the path only gets shorter as we scroll
-        path.style.strokeDashoffset = Math.max(drawLength, 0);
-
-        // Call the experience reveal function
-        revealExperiences(scrollPercentage);  // Use original scrollPercentage here for experiences
+        const drawLength = pathLength * (1 - scrollPercentage);
+        const startingOffset = pathLength - windowHeight * 0.6; // Start the curve higher up
+    
+        const adjustedDashOffset = Math.max(drawLength - offsetInPathLength, startingOffset);
+    
+        path.style.strokeDashoffset = adjustedDashOffset;
+        revealExperiences(scrollPercentage);
     }
-
+    
     function revealExperiences(scrollPercentage) {
         experiences.forEach((experience, index) => {
-            const experienceStart = (index * 0.2) + 0.2;
+            const experienceStart = (index * 0.2) + 0.0;
             const experienceEnd = experienceStart + 0.15;
 
             if (scrollPercentage >= experienceStart && scrollPercentage <= experienceEnd) {
@@ -48,3 +49,49 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", animatePath);
 });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const boatContainer = document.getElementById("boats-container");
+    const boatImages = ["images/purpleboat.png", "images/redboat.png", "images/orangeboat.png"]; 
+    const numberOfBoats = 6; // number of boats
+
+    for (let i = 0; i < numberOfBoats; i++) {
+        const boat = document.createElement("img");
+        boat.src = boatImages[Math.floor(Math.random() * boatImages.length)];
+        boat.classList.add("boat");
+
+        const randomTop = Math.random() * 95 + 5;
+        const randomLeft = Math.random() * 96;
+        boat.style.top = `${randomTop}%`;
+        boat.style.left = `${randomLeft}%`;
+
+        const randomRotation = Math.random() * 360;
+        boat.style.setProperty("--rotation", `${randomRotation}deg`);
+
+        boatContainer.appendChild(boat);
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const starfishContainer = document.getElementById("starfish-container");
+
+    const starfishImages = ["images/starfish.png", "images/redstarfish.png", "images/greenstarfish.png"];
+    const numberOfStarfish = 7;
+
+    for (let i = 0; i < numberOfStarfish; i++) {
+        const starfish = document.createElement("img");
+        starfish.src = starfishImages[Math.floor(Math.random() * starfishImages.length)];
+        starfish.classList.add("starfish");
+
+        const randomTop = Math.random() * 40 + 50;
+        const randomLeft = Math.random() * 96; 
+        starfish.style.top = `${randomTop}%`;
+        starfish.style.left = `${randomLeft}%`;
+
+        const randomRotation = Math.random() * 360;
+        starfish.style.transform = `rotate(${randomRotation}deg)`;
+
+        starfishContainer.appendChild(starfish);
+    }
+});

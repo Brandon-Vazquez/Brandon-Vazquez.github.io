@@ -2,29 +2,36 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: white;
-    background: linear-gradient(180deg, #265A86 41%, #3172A1 43%, #498AB7 54%);
 }
+
+.title{
+    z-index: 2;
+}
+
 
 .navbar{
     background: linear-gradient( #265A86 0%, #265A86 100%);
+    z-index: 1;
 
 }
 
 .nav-link{
     color: white;
     font-family: Arial, sans-serif;
+    font-size: 1.2rem;
 }
 
 
 .landing-page {
+    background-color: #265A86;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: -56px;
-    /* margin-top: 20%; */
     align-items: center;
     height: 100vh;
     text-align: center;
+    position: relative;
 }
 
 .name {
@@ -43,47 +50,91 @@ body {
     align-items: center;
     height: 1000px;
     position: relative;
-    overflow: hidden; /* Ensures the SVG path doesn't extend beyond the container */
+    overflow: visible;
+}
+
+.transition {
+    background: linear-gradient(180deg, #265A86 42%, #3172A1 42%, #3172A1 62%, #498AB7 62%);
+    overflow: visible;
+    position: relative;
+    z-index: 0;
 }
 
 .timeline-container {
+    background-color: #498AB7;
     padding: 30px 0;
     width: 100%;
-    height: 1100px; /* Extended to ensure enough space */
+    margin-top:-12%;
+    height: 1100px;
     position: relative;
-    overflow: hidden; /* Ensure the SVG path stays within the bounds */
+    overflow: hidden;
+    z-index: 2;
 }
 
-svg {
-    position: absolute;
-    top: 0;
-    left: 0; /* Align the SVG to the left edge */
-    width: 99vw; /* Full width of the viewport */
-    height: 1800px; /* Increased height for a longer path */
-    overflow: hidden;
-}
 
 #curve {
-    stroke: rgb(255, 255, 255);
+    /* stroke: #234d6c; */
+    stroke: #b4c5d0;
     fill: none;
-    stroke-width: 50;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
+    stroke-width: 6;
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
     transition: stroke-dashoffset 0.3s linear;
+    opacity: 0.7;
+}
+
+#timeline-path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+
+#wave1{
+    margin-bottom: auto;
 }
 
 #curve1 {
     stroke: #3172A1;
-    fill: none;
-    stroke-width: 200;
-    width: 100vw; /* Ensure the path spans the full width */
+    fill: transparent;
+    stroke-width: 9;
+    width: 100vw;
 }
 
 #curve2 {
     stroke: #498AB7;
-    fill: none;
-    stroke-width: 200;
-    width: 100vw; /* Ensure the path spans the full width */
+    fill: transparent;
+    stroke-width: 9;
+    width: 100vw;
+}
+
+.transition2 {
+    background: linear-gradient(180deg, #498AB7 50%, #E8CDA4 50%);
+    position: relative;
+}
+
+#curve4 {
+    stroke: #A0C8DA;
+    fill: transparent;
+    stroke-width: 9;
+    width: 100vw;
+}
+
+#curve5 {
+    stroke: #F7F0ED;
+    fill: transparent;
+    stroke-width: 9;
+    width: 100vw;
+}
+
+#curve6 {
+    stroke: #E8CDA4;
+    fill: transparent;
+    stroke-width: 9;
+    width: 100vw;
 }
 
 
@@ -99,14 +150,75 @@ svg {
 }
 
 .left {
-    left: 5%;  /* Align to the left side */
+    left: 5%;
 }
 
 .right {
-    right: 5%; /* Align to the right side */
+    right: 5%;
 }
 
 #experience1 { top: 10%; }
-#experience2 { top: 35%; } /* Adjusted positions for better spacing */
+#experience2 { top: 35%; }
 #experience3 { top: 60%; }
 #experience4 { top: 85%; }
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: #E8CDA4;
+    color: black;
+    font-size: 32px;
+    height: 50px;
+  }
+
+#boats-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1;
+}
+
+
+.boat {
+    position: absolute;
+    width: 50px;
+    height: auto;
+    animation: float 4s infinite ease-in-out;
+    transform-origin: center;
+    transform: rotate(var(--rotation, 0deg));
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(-3px) rotate(var(--rotation, 0deg));
+    }
+    50% {
+        transform: translateY(3px) rotate(var(--rotation, 0deg));
+    }
+}
+
+
+
+#starfish-container {
+    position: absolute;
+    top: 50%; 
+    left: 0;
+    width: 100%;
+    height: 50%; 
+    pointer-events: none; 
+    z-index: 1; 
+}
+
+.starfish {
+    position: absolute;
+    width: 40px; 
+    height: auto;
+    opacity: 0.8;
+    transition: transform 0.2s ease;
+}
+

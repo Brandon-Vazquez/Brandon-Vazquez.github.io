@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Website</title>
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
 </head>
-
-<svg id="wave1" viewBox="-500 0 2400 600" xmlns="http://www.w3.org/2000/svg">
-    <path id="curve1" d="M-800 300 C 300 110, 1200 500, 1800 200 S 3400 700, 2900 200" />
-</svg>
-
-
-<svg id="wave2" viewBox="-500 0 2400 600" xmlns="http://www.w3.org/2000/svg">
-    <path id="curve2" d="M-800 700 C 300 310, 1200 800, 1800 200 S 3400 700, 2900 200" />
-</svg>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -27,7 +17,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" href="website.html">Home</a>
+          <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="#">Features</a>
           <a class="nav-link" href="https://www.linkedin.com/in/brandon-vazquez-munoz/" target="_blank"> LinkedIn </a>
         </div>
@@ -35,18 +25,29 @@
     </div>
   </nav>
 
+
 <body>
 
-    <div class="landing-page">
+    <div id="boats-container"></div>
 
-        <h1 class="name">Brandon Vazquez Munoz</h1>
-        <p class="basic-info">Computer Science Student | Cornell University | Brief Info</p>
+    <div class="landing-page">
+        <div class="title">
+            <h1 class="name">Brandon Vazquez Munoz</h1>
+            <p class="basic-info">Computer Science Student | Cornell University | Brief Info</p>
+        </div>
+        
+    </div>
+    
+
+    <div class="transition">
+        <svg id="wave1" viewBox="0 0 100 30" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="curve1" d="M-5 12 C 20 5, 40 14, 55 14 S 70 7, 103 8.6" />
+            <path id="curve2" d="M-5 22 C 20 21, 40 17, 60 18 S 70 17, 103 14" />
+          </svg>   
     </div>
 
     <div class="timeline-container">
 
-
-        
         <div class="timeline-item left" id="experience1">
             <h2>Experience 1</h2>
             <p>Description of Experience 1.</p>
@@ -63,14 +64,37 @@
             <h2>Experience 4</h2>
             <p>Description of Experience 4.</p>
         </div>
-        
-        <svg id="timeline-path" viewBox="0 0 200 1000" xmlns="http://www.w3.org/2000/svg">
-            <path id="curve" d="M25 -20 C 300 150, 0 300, 50 450 S 100 600, 50 750" />
+
+        <svg id="timeline-path" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="curve" d="M40 -40 C 60 25, 40 50, 50 75 C 50 75, 55 85, 50 120" />
+
         </svg>
+        
 
         </div>
 
+    <div class="transition2">
+        
+        <svg id="wave2" viewBox="0 0 100 30" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="curve4" d="M-5 6.6 C 20 5, 40 12, 55 12 S 70 3, 103 10" />
+            <path id="curve5" d="M-5 10.6 C 28 7, 40 20, 55 20 S 70 10, 103 15" />
+            <path id="curve6" d="M-5 20.6 C 38 7, 40 30, 55 24 S 70 20, 103 17" />
+        </svg>   
+
+        <div id="starfish-container"></div>
+
+    </div>
+    
+
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoA6lpB4rS1I/J+dMhB/qW1t1xa9zXtv/2Pb6+z9x0xq5r6" crossorigin="anonymous"></script>
    <script src="script.js"></script>
+
 </body>
+
+<footer class="mt-auto">
+    <div>
+      <p style="text-align: center;">UNDER CONSTRUCTION<a </p>
+    </div>
+  </footer>
+
 </html>
