@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Brandon-Vazquez.github.io/Brandon-Vazquez.github.io",
+  "homepage": "https://brandon-vazquez.github.io",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
