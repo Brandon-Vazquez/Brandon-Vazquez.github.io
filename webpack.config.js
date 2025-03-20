@@ -8,8 +8,9 @@ module.exports = (env, argv) => {
     entry: './src/main.jsx',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.js',
-      publicPath: isProduction ? '/Brandon-Vazquez.github.io/' : '/',
+      filename: '[name].[contenthash].js',
+      publicPath: isProduction ? '' : '/',
+      clean: true,
     },
     module: {
       rules: [
@@ -33,8 +34,7 @@ module.exports = (env, argv) => {
             {
               loader: 'file-loader',
               options: {
-                name: '[name].[ext]',
-                outputPath: 'images/'
+                name: 'images/[name].[hash].[ext]'
               }
             }
           ]
@@ -46,7 +46,8 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html'
+        template: './index.html',
+        filename: 'index.html'
       })
     ],
     devServer: {
