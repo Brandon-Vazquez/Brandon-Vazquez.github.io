@@ -1,0 +1,106 @@
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.App {
+  text-align: center;
+}
+
+.navbar {
+  background: linear-gradient(#265A86 0%, #265A86 100%);
+  z-index: 1;
+}
+
+.nav-link {
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+footer {
+  background: #E8CDA4;
+  text-align: center;
+  font-size: 1.3rem;
+  padding: 10px;
+}
+
+footer p {
+  color: #746651;
+  padding-bottom: 14px;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: #746651;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.icon-wrapper:hover {
+  background-color: white;
+}
+
+.icon-wrapper .icon {
+  width: 2.7rem;
+  height: 2.7rem;
+  fill: white;
+  transition: fill 0.3s ease;
+}
+
+.icon-wrapper:hover .icon {
+  fill: #746651;
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
