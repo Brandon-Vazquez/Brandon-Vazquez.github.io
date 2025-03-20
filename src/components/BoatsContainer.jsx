@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react';
 import purpleBoat from '../assets/images/purpleboat.png';
 import redBoat from '../assets/images/redboat.png';

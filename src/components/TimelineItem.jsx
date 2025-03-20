@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useRef } from 'react';
 import profileImage from '../assets/images/profile.jpg';
 

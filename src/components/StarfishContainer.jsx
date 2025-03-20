@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react';
 import starfish from '../assets/images/starfish.png';
 import redStarfish from '../assets/images/redstarfish.png';

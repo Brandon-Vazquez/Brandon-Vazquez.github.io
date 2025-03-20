@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useRef } from 'react';
 import TimelineItem from './TimelineItem';
 import BoatsContainer from './BoatsContainer';
@@ -20,21 +21,16 @@ function Home() {
       const windowHeight = window.innerHeight;
       const totalHeight = document.body.scrollHeight - windowHeight;
       const scrollPercentage = scrollY / totalHeight;
-      
-      // Calculate a dynamic offset that scales with scroll position
-      const minOffset = 100; // Minimum offset from bottom
-      const maxOffset = 300; // Maximum offset from bottom
-      const dynamicOffset = minOffset + (maxOffset - minOffset) * (1 - scrollPercentage);
-      
-      // Convert pixel offset to path length units
-      const offsetInPathLength = (dynamicOffset / path.getBoundingClientRect().height) * pathLength;
-      
+
       // Calculate draw length based on scroll position
       const drawLength = pathLength * (1 - scrollPercentage);
       
-      // Ensure curve stays visible by maintaining minimum distance from bottom
-      const minDistance = pathLength * 0.2;
-      const adjustedDashOffset = Math.max(drawLength - offsetInPathLength, minDistance);
+      // Calculate offset that scales with scroll position
+      const offsetPercentage = 0.08; // 20% offset that scales
+      const scaledOffset = pathLength * offsetPercentage * (1 - scrollPercentage);
+      
+      // Apply the scaled offset
+      const adjustedDashOffset = drawLength - scaledOffset;
       
       path.style.strokeDashoffset = adjustedDashOffset;
     };
@@ -109,7 +105,8 @@ function Home() {
         ))}
         <svg id="timeline-path" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path ref={pathRef} id="curve" d="M40 -40 C 60 25, 40 50, 50 75 C 50 75, 55 85, 50 120" />
-
+          {/* <svg id="timeline-path" viewBox="0 0 100 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path ref={pathRef} id="curve" d="M40 -40 C 60 25, 40 50, 50 100 C 50 150, 55 180, 50 250" /> */}
         </svg>
       </div>
 

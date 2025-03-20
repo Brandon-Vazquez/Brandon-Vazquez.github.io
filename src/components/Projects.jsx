@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react';
 import TimelineItem from './TimelineItem';
 import BoatsContainer from './BoatsContainer';
