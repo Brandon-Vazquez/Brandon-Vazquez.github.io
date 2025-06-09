@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].[contenthash].js',
-      publicPath: isProduction ? '/Brandon-Vazquez.github.io/' : '/',
+      publicPath: isProduction ? './' : '/',
       clean: true,
     },
     module: {
