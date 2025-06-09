@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].[contenthash].js',
-      publicPath: isProduction ? '' : '/',
+      publicPath: isProduction ? '/Brandon-Vazquez.github.io/' : '/',
       clean: true,
     },
     module: {
@@ -30,14 +30,10 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/i,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'images/[name].[hash].[ext]'
-              }
-            }
-          ]
+          type: 'asset/resource',
+          generator: {
+            filename: 'images/[name][ext]'
+          }
         }
       ]
     },
