@@ -41,10 +41,10 @@ const Projects = () => {
 
   const projectGithubUrls = {
     plane: null,
-    echoAce: "https://github.com/Brandon-Vazquez/echo-ace",
-    arcade: "https://github.com/Brandon-Vazquez/arcade-project",
+    echoAce: "https://github.com/ASCEND-EchoAce/echoace-fullstack",
+    arcade: null,
     stockMarket: "https://github.com/rafaelolal/citadel_final",
-    camera: "https://github.com/Brandon-Vazquez/computer-vision",
+    camera: null,
     laptop: null 
   };
 
@@ -85,30 +85,61 @@ const Projects = () => {
     echoAce: (
       <div>
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>EchoAce</h2>
-        <div style={{ marginBottom: '1.5rem', width: '60%', margin: '0 auto 1.5rem auto' }}>
-          <ZoomableImage src="assets/echoace.png" alt="EchoAce" />
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
+          <div style={{ width: '20%' }}>
+            <ZoomableImage src="assets/echoace.png" alt="EchoAce" />
+          </div>
         </div>
+        <p style={{ fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '0.5rem' }}>
+          <strong>Tools Used:</strong> React.js, Node.js, Supabase, Python, OpenAI Whisper, LLMs
+        </p>
         <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
-          EchoAce is our acoustic sensing robot designed for deep exploration missions. Using advanced sonar technology, it can navigate and map environments where traditional sensors might fail.
+        EchoAce is an AI-powered interview preparation platform I co-developed as 
+        part of the LinkedIn ASCEND program. The tool simulates realistic behavioral 
+        interviews using a Large Language Model (LLM) and provides personalized, 
+        data-informed feedback to help users improve over time. My primary contributions 
+        focused on backend and system integration — I implemented audio recording and 
+        transcription using OpenAI Whisper, helped configure Supabase for user data management, 
+        and built the backend pipeline that evaluates transcriptions using LLMs.
+        I also developed key dashboard components, including a timeline that visualizes user 
+        progress and conversation history, and added functionality for users to revisit past 
+        interviews, ask follow-up questions, and receive context-aware insights.
         </p>
       </div>
     ),
     arcade: (
       <div>
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>Scrabble Game</h2>
-        <div style={{ marginBottom: '1.5rem', width: '60%', margin: '0 auto 1.5rem auto' }}>
+        <div style={{ marginBottom: '1.5rem', width: '50%', margin: '0 auto 1.5rem auto' }}>
           <ZoomableImage src="assets/arcade.png" alt="scrabble" />
         </div>
+        <p style={{ fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '0.5rem' }}>
+          <strong>Tools Used:</strong> Rust
+        </p>
         <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
-          Arcade is a retro-style interactive project developed for human-robot entertainment. Experience classic gaming with a modern twist, featuring custom-built hardware and innovative gameplay mechanics.
+        I developed a Scrabble game focusing on performance and clean system design. 
+        The project includes core game mechanics such as 
+        tile management, word validation, scoring logic, and turn-based play. I also 
+        introduced features not found in traditional Scrabble, such as a real-time 
+        word lookup tool that lets players verify word validity before making a move. 
+        Rust's strong type system and concurrency support allowed me to build a fast, 
+        reliable system that could handle complex game state transitions with ease. 
+        This project deepened my understanding of systems programming and reinforced 
+        best practices in modular design and error handling.
         </p>
       </div>
     ),
     laptop: (
       <div>
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>Personal Website</h2>
+        <p style={{ fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '0.5rem' }}>
+          <strong>Tools Used:</strong> Node.js, React, CSS, HTML, Spline, GitHub Pages, Git
+        </p>
         <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
-          A modern, interactive portfolio website showcasing my projects and skills. Built with React and featuring 3D elements for an engaging user experience.
+          A modern, interactive portfolio website built with React. The site features a dynamic 3D scene created with Spline, 
+          showcasing my projects in an immersive environment. I implemented a responsive design with smooth animations and transitions, 
+          along with a theme switcher for light/dark mode. The project demonstrates my ability to create engaging user experiences 
+          while maintaining clean, maintainable code architecture.
         </p>
       </div>
     ),
@@ -116,15 +147,26 @@ const Projects = () => {
       <div>
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>Object Detection and Classification</h2>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-          <div style={{ width: '48%' }}>
+          {/* <div style={{ width: '48%' }}>
             <ZoomableImage src="assets/detection.png" alt="Object Detection" />
           </div>
           <div style={{ width: '48%' }}>
             <ZoomableImage src="assets/classification.png" alt="Object Classification" />
-          </div>
+          </div> */}
         </div>
         <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
-          A computer vision system capable of detecting and classifying objects in real-time. Built using deep learning models and optimized for performance on edge devices.
+        As part of Cornell Unmanned Air Systems (CUAIR), I developed an object 
+        detection and classification system using Python, the YOLO (You Only Look Once) 
+        model, and the SAHI (Slicing Aided Hyper Inference) framework. This tool is 
+        designed to automatically identify and classify alphanumeric targets during 
+        autonomous flight missions, a critical capability for aerial target recognition.
+        To improve performance on small or distant targets, I used SAHI to slice 
+        high-resolution images into overlapping patches, enhancing YOLO’s accuracy 
+        without compromising inference speed. I also leveraged transfer learning and 
+        synthetic data generation to train the model for high precision in varied environments, 
+        achieving over 98% classification accuracy. This project contributed significantly to 
+        CUAIR’s autonomous mission objectives and advanced our team’s use of deep learning in 
+        real-time aerial systems.
         </p>
       </div>
     ),

@@ -58,16 +58,19 @@ const About = () => {
           <h2 className="section-title">About Me</h2>
           <div className="history-content">
             <p>
-              I'm a passionate software developer with a strong foundation in web development
-              and a keen eye for creating elegant solutions to complex problems. My journey
-              in technology began with a curiosity about how things work, which evolved into
-              a deep love for building and creating digital experiences.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+              nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
             <p>
-              With a background in both front-end and back-end development, I strive to create
-              applications that are not only functional but also intuitive and user-friendly.
-              I believe in writing clean, maintainable code and staying up-to-date with the
-              latest technologies and best practices in the industry.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+              eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt 
+              in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+              doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
+              veritatis et quasi architecto beatae vitae dicta sunt explicabo.
             </p>
           </div>
         </section>
