@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -9,7 +10,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].[contenthash].js',
-      publicPath: isProduction ? './' : '/',
+      publicPath: isProduction ? '/Brandon-Vazquez.github.io/' : '/',
       clean: true,
     },
     module: {
@@ -32,7 +33,7 @@ module.exports = (env, argv) => {
           test: /\.(png|jpe?g|gif|svg)$/i,
           type: 'asset/resource',
           generator: {
-            filename: 'images/[name][ext]'
+            filename: 'assets/[name][ext]'
           }
         }
       ]
@@ -44,6 +45,14 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './index.html',
         filename: 'index.html'
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: 'public/assets',
+            to: 'assets'
+          }
+        ]
       })
     ],
     devServer: {

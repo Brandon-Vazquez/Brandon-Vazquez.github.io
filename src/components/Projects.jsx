@@ -63,10 +63,10 @@ const Projects = () => {
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>Fixed Wing Obstacle Avoidance</h2>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
           <div style={{ width: '42%' }}>
-            <ZoomableImage src="/lidar.png" alt="Fixed Wing 1" />
+            <ZoomableImage src="assets/lidar.png" alt="Fixed Wing 1" />
           </div>
           <div style={{ width: '28%' }}>
-            <ZoomableImage src="/RL_model.png" alt="Fixed Wing 2" />
+            <ZoomableImage src="assets/RL_model.png" alt="Fixed Wing 2" />
           </div>
         </div>
         <p style={{ fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '0.5rem' }}>
@@ -86,7 +86,7 @@ const Projects = () => {
       <div>
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>EchoAce</h2>
         <div style={{ marginBottom: '1.5rem', width: '60%', margin: '0 auto 1.5rem auto' }}>
-          <ZoomableImage src="/echoace.png" alt="EchoAce" />
+          <ZoomableImage src="assets/echoace.png" alt="EchoAce" />
         </div>
         <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
           EchoAce is our acoustic sensing robot designed for deep exploration missions. Using advanced sonar technology, it can navigate and map environments where traditional sensors might fail.
@@ -97,7 +97,7 @@ const Projects = () => {
       <div>
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>Scrabble Game</h2>
         <div style={{ marginBottom: '1.5rem', width: '60%', margin: '0 auto 1.5rem auto' }}>
-          <ZoomableImage src="/arcade.png" alt="scrabble" />
+          <ZoomableImage src="assets/arcade.png" alt="scrabble" />
         </div>
         <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
           Arcade is a retro-style interactive project developed for human-robot entertainment. Experience classic gaming with a modern twist, featuring custom-built hardware and innovative gameplay mechanics.
@@ -117,10 +117,10 @@ const Projects = () => {
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>Object Detection and Classification</h2>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
           <div style={{ width: '48%' }}>
-            <ZoomableImage src="/detection.png" alt="Object Detection" />
+            <ZoomableImage src="assets/detection.png" alt="Object Detection" />
           </div>
           <div style={{ width: '48%' }}>
-            <ZoomableImage src="/classification.png" alt="Object Classification" />
+            <ZoomableImage src="assets/classification.png" alt="Object Classification" />
           </div>
         </div>
         <p style={{ fontSize: '1.1rem', lineHeight: 1.6 }}>
@@ -138,7 +138,7 @@ const Projects = () => {
         Metric Comparator is a financial analysis web application I developed in collaboration with one other engineer, where we practiced pair programming to design and implement each feature. Built with Django and JavaScript, the tool analyzes real-time stock data from the Yahoo Finance API using a suite of technical indicators including SMA, EMA, WMA, RSI, Bollinger Bands, and the Stochastic Oscillator.
         <br/>
         <br/> 
-        The platform provides comparative performance analysis, maximum profit calculations, and AI-powered insights generated using Google’s Gemini model. The result is a responsive, insight-rich interface that delivers actionable trading signals and helps users make informed investment decisions.
+        The platform provides comparative performance analysis, maximum profit calculations, and AI-powered insights generated using Google's Gemini model. The result is a responsive, insight-rich interface that delivers actionable trading signals and helps users make informed investment decisions.
         </p>
       </div>
     ),

@@ -12,11 +12,9 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-image">
             <div className="image-container">
-              <img 
-                src="/profile.jpg" 
-                alt="Brandon Vazquez" 
-                className="profile-image"
-              />
+              <div className="profile-image">
+                <img src="assets/profile.jpg" alt="Brandon Vazquez" />
+              </div>
               <div className="image-backdrop"></div>
             </div>
           </div>
@@ -27,13 +25,13 @@ const Home = () => {
             </div>
             <h2 className="name">Brandon Vazquez Munoz</h2>
             <p className="description">
-              I’m a Computer Science student at Cornell University with experience in full-stack 
-              development, machine learning, and more. I’m passionate about building user-focused 
+              I'm a Computer Science student at Cornell University with experience in full-stack 
+              development, machine learning, and more. I'm passionate about building user-focused 
               applications and exploring careers in Tech.
             </p>
             <div className="cta-buttons">
               <a 
-                href="/Brandon_Vazquez-Munoz_Resume.pdf" 
+                href="assets/Brandon_Vazquez-Munoz_Resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="cta-button primary"
