@@ -1,0 +1,11 @@
+.zoom-image {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  max-width: 100%;
+  height: auto;
+}
+
+.zoom-image.zoomed {
+  transform: scale(1.2);
+  z-index: 10;
+} 

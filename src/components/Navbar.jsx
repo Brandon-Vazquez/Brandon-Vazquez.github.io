@@ -1,46 +1,68 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import './Navbar.css';
 
-function Navbar() {
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth'
-    });
-  };
+const Navbar = () => {
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const location = useLocation();
 
-  return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarNavAltMarkup" 
-          aria-controls="navbarNavAltMarkup" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
-            <Link className="nav-link" to="/">Home</Link>
-            <Link className="nav-link" to="/projects">Projects</Link>
-            <button 
-              className="nav-link" 
-              onClick={scrollToBottom}
-              style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-            >
-              Contact
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-}
+    useEffect(() => {
+        // Check for saved theme preference or use system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setIsDarkTheme(true);
+            document.documentElement.classList.add('dark');
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        setIsDarkTheme(!isDarkTheme);
+        if (isDarkTheme) {
+            document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
+        }
+    };
+
+    return (
+        <header className="navbar">
+            <div className="nav-container">
+                <div className="nav-left">
+                    <Link to="/" className="brand-name">Brandon Vazquez Munoz</Link>
+                </div>
+                <div className="nav-right">
+                    <nav className="main-nav">
+                        <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
+                            HOME
+                        </Link>
+                        <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}>
+                            ABOUT ME
+                        </Link>
+                        <Link to="/projects" className={`nav-link ${location.pathname === '/projects' ? 'active' : ''}`}>
+                            PROJECTS
+                        </Link>
+                    </nav>
+                    <button
+                        className={`theme-switcher-grid ${isDarkTheme ? 'night-theme' : ''}`}
+                        onClick={toggleTheme}
+                        aria-label="Switch theme"
+                    >
+                        <div className="sun" aria-hidden="true"></div>
+                        <div className="moon-overlay" aria-hidden="true"></div>
+                        <div className="cloud-ball cloud-ball-left" aria-hidden="true"></div>
+                        <div className="cloud-ball cloud-ball-middle" aria-hidden="true"></div>
+                        <div className="cloud-ball cloud-ball-right" aria-hidden="true"></div>
+                        <div className="cloud-ball cloud-ball-top" aria-hidden="true"></div>
+                        <div className="star" aria-hidden="true"></div>
+                        <div className="star" aria-hidden="true"></div>
+                        <div className="star" aria-hidden="true"></div>
+                        <div className="star" aria-hidden="true"></div>
+                    </button>
+                </div>
+            </div>
+        </header>
+    );
+};
 
 export default Navbar; 

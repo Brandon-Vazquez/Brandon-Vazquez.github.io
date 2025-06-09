@@ -1,0 +1,113 @@
+.checklist-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 150px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.dark .checklist-container {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.checklist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.dark .checklist-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.checklist-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+.chevron-icon {
+    color: var(--text);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.chevron-icon.open {
+    transform: rotate(180deg);
+}
+
+.checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+}
+
+.checklist-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.checklist-label input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--text);
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checklist-label input:checked + .checkmark {
+    background-color: #0A66C2;
+    border-color: #0A66C2;
+}
+
+.dark .checklist-label input:checked + .checkmark {
+    background-color: #B8624D;
+    border-color: #B8624D;
+}
+
+@media (max-width: 768px) {
+    .checklist-container {
+        width: 200px;
+        right: 10px;
+    }
+} 
