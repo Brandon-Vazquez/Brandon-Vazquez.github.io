@@ -42,6 +42,8 @@
 /* History Section */
 .history-content {
   max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .history-content p {
@@ -50,84 +52,122 @@
   color: var(--text);
   opacity: 0.9;
   margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 /* Skills Section */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.skill-category {
-  background-color: var(--navbar-background);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.skill-category:hover {
-  transform: translateY(-5px);
-}
-
-.skill-category h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #0A66C2;
-}
-
-.dark .skill-category h3 {
-  border-bottom-color: #B8624D;
-}
-
-.skills-icons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 1.5rem;
-  justify-items: center;
-}
-
-.skill-icon-wrapper {
+.skills-legend {
   display: flex;
-  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.legend-item {
+  display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: transform 0.3s ease;
 }
 
-.skill-icon-wrapper:hover {
-  transform: translateY(-5px);
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
 }
 
-.skill-icon {
-  font-size: 2.5rem;
-  color: #0A66C2;
-  transition: color 0.3s ease;
+.frontend-color {
+  background-color: rgba(74, 144, 226, 0.6);
 }
 
-.dark .skill-icon {
-  color: #B8624D;
+.backend-color {
+  background-color: rgba(80, 227, 194, 0.6);
 }
 
-.skill-name {
-  font-size: 0.9rem;
-  color: var(--text);
-  opacity: 0.9;
-  text-align: center;
+.tools-color {
+  background-color: rgba(245, 166, 35, 0.6);
 }
 
-/* Timeline Section */
-.timeline-container {
-  margin-top: 2rem;
+.skills-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Hexagon Styles */
+.hexagon-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  cursor: pointer;
+}
+
+.hexagon-frontend {
+  background-color: rgba(74, 144, 226, 0.6);
+}
+
+.hexagon-backend {
+  background-color: rgba(80, 227, 194, 0.6);
+}
+
+.hexagon-tools {
+  background-color: rgba(245, 166, 35, 0.6);
+}
+
+.hexagon-icon {
+  font-size: 3.5rem;
+  color: var(--text);
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.hexagon-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  width: 100%;
+  padding: 0 10px;
+  z-index: 2;
+}
+
+.hexagon-content:hover {
   z-index: 1;
+}
+
+.hexagon-content:hover .hexagon-icon {
+  opacity: 0.2;
+}
+
+.hexagon-content:hover .hexagon-name {
+  opacity: 1;
+}
+
+@media (max-width: 1200px) {
+  .skills-container {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 900px) {
+  .skills-container {
+    max-width: 600px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -139,24 +179,33 @@
     font-size: 2rem;
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .skills-container {
+    max-width: 400px;
   }
 
-  .history-content p {
-    font-size: 1rem;
+  .hexagon-icon {
+    font-size: 2.8rem;
   }
 
-  .skills-icons {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  .hexagon-name {
+    font-size: 0.8rem;
+  }
+
+  .skills-legend {
     gap: 1rem;
   }
 
-  .skill-icon {
-    font-size: 2rem;
+  .legend-item {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-container {
+    max-width: 300px;
   }
 
-  .skill-name {
-    font-size: 0.8rem;
+  .hexagon-icon {
+    font-size: 2.5rem;
   }
 } 

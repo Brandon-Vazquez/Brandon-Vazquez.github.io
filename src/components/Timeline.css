@@ -42,24 +42,64 @@
 }
 
 .timeline-content {
-  background-color: var(--navbar-background);
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(3px);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: all 0.3s ease;
 }
 
-.timeline-date {
-  font-size: 0.9rem;
-  color: var(--text);
-  opacity: 0.8;
-  margin-bottom: 0.5rem;
+.dark .timeline-content {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.timeline-content:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dark .timeline-content:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.timeline-header {
+  margin-bottom: 1rem;
 }
 
 .timeline-title {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 1rem;
+  margin: 0;
+  display: inline;
+}
+
+.timeline-company {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0A66C2;
+  margin: 0;
+  display: inline;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-company:hover {
+  opacity: 0.8;
+}
+
+.dark .timeline-company {
+  color: #B8624D;
+}
+
+.timeline-meta {
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.7;
+  margin: 0.5rem 0;
 }
 
 .timeline-description {
@@ -67,6 +107,19 @@
   line-height: 1.6;
   color: var(--text);
   opacity: 0.9;
+  margin: 0;
+}
+
+.timeline-description p {
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.timeline-description p::before {
+  content: '-';
+  position: absolute;
+  left: 0;
 }
 
 @media (max-width: 768px) {
@@ -83,4 +136,17 @@
     width: 16px;
     height: 16px;
   }
-} 
+
+  .timeline-title,
+  .timeline-company {
+    font-size: 1.1rem;
+  }
+
+  .timeline-meta {
+    font-size: 0.8rem;
+  }
+
+  .timeline-description {
+    font-size: 0.9rem;
+  }
+}
