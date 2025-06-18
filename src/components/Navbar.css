@@ -2,7 +2,7 @@
 :root {
     --background: #F5F5F5;
     --text: #000000;
-    --navbar-bg: rgba(255, 255, 255, 0.2);
+    --navbar-bg: rgba(245, 245, 245, 0.7);
     --navbar-border: rgba(0, 0, 0, 0.35);
     --link-hover: #666;
     --menu-line: #000;
@@ -21,7 +21,7 @@
 .dark {
     --background: #2d2d2d;
     --text: #ffffff;
-    --navbar-bg: rgba(20, 20, 20, 0.2);
+    --navbar-bg: rgba(45, 45, 45, 0.7);
     --navbar-border: rgba(255, 255, 255, 0.35);
     --link-hover: #999;
     --menu-line: #fff;
@@ -34,13 +34,22 @@
     left: 0;
     right: 0;
     height: 80px;
-    background-color: var(--background);
+    background-color: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-transparent {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none;
 }
 
 .nav-container {

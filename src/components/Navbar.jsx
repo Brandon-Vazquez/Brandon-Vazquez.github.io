@@ -25,8 +25,11 @@ const Navbar = () => {
         }
     };
 
+    // Add transparent class on /projects
+    const navbarClass = `navbar${location.pathname === '/projects' ? ' navbar-transparent' : ''}`;
+
     return (
-        <header className="navbar">
+        <header className={navbarClass}>
             <div className="nav-container">
                 <div className="nav-left">
                     <Link to="/" className="brand-name">Brandon Vazquez Munoz</Link>

@@ -71,7 +71,7 @@ const Timeline = () => {
           <div className="timeline-dot"></div>
           <div className="timeline-content">
             <div className="timeline-header">
-              <h3 className="timeline-title">{experience.title}</h3>
+            <h3 className="timeline-title">{experience.title}</h3>
               <span>, </span>
               <a 
                 href={experience.companyUrl} 
