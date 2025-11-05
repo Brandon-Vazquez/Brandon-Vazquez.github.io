@@ -22,10 +22,12 @@ import {
   SiNumpy,
   SiPandas,
   SiFlask,
-  SiBootstrap
+  SiBootstrap,
+  SiSupabase,
+  SiOpenai
 } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa';
-import { BiLineChart } from 'react-icons/bi';
+import { FaJava, FaCode } from 'react-icons/fa';
+import { BiLineChart, BiBrain } from 'react-icons/bi';
 import './About.css';
 
 const About = () => {
@@ -44,6 +46,7 @@ const About = () => {
       { icon: <SiPython />, name: 'Python' },
       { icon: <FaJava />, name: 'Java' },
       { icon: <SiOcaml />, name: 'OCaml' },
+      { icon: <FaCode />, name: 'C' },
       { icon: <SiFlask />, name: 'Flask' }
     ],
     tools: [
@@ -51,12 +54,15 @@ const About = () => {
       { icon: <SiGithub />, name: 'GitHub' },
       { icon: <SiDocker />, name: 'Docker' },
       { icon: <SiJupyter />, name: 'Jupyter' },
+      { icon: <SiSupabase />, name: 'Supabase' },
+      { icon: <SiOpenai />, name: 'Whisper' },
       { icon: <SiPytorch />, name: 'PyTorch' },
       { icon: <SiOpencv />, name: 'OpenCV' },
       { icon: <SiScikitlearn />, name: 'Scikit-learn' },
       { icon: <SiNumpy />, name: 'NumPy' },
       { icon: <SiPandas />, name: 'Pandas' },
-      { icon: <BiLineChart />, name: 'Matplotlib' }
+      { icon: <BiLineChart />, name: 'Matplotlib' },
+      { icon: <BiBrain />, name: 'Stable Baselines' }
     ]
   };
 

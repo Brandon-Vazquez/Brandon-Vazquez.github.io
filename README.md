@@ -8,12 +8,12 @@ A modern, interactive portfolio website showcasing my work as a Computer Science
 - **Dynamic Skills Visualization** - Hexagonal honeycomb grid displaying technical skills
 - **Responsive Design** - Optimized for all devices with smooth animations
 - **Dark/Light Theme Toggle** - Custom animated theme switcher
-- **Interactive Timeline** - Professional experience with clickable company links
+- **Interactive Timeline** - Company-first layout with italicized tools list and smooth entry animations
 - **Animated Background** - Dynamic particle system with connecting lines
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, TypeScript, CSS3
+- **Frontend**: React, TypeScript, CSS
 - **3D Graphics**: Spline
 - **Icons**: React Icons
 - **Layout**: React Honeycomb (hexagonal grid)
@@ -39,17 +39,7 @@ src/
 - **About**: Background story, technical skills, and work experience
 - **Projects**: Interactive 3D environment showcasing projects
 
-## 🚀 Getting Started
-
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start development server: `npm run dev`
-4. Build for production: `npm run build`
 
 ## 📱 Live Demo
 
 Visit [brandon-vazquez.github.io](https://brandon-vazquez.github.io) to see the live portfolio.
-
----
-
-*Built with ❤️ using React and modern web technologies*

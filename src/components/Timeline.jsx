@@ -1,98 +1,136 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Timeline.css';
 
 const Timeline = () => {
+  const [visibleItems, setVisibleItems] = useState(new Set());
+  const itemRefs = useRef([]);
+
   const experiences = [
-    {
-      date: 'May 2025 - Present',
-      location: 'San Antonio, TX',
-      title: 'Backend Development Intern',
-      company: '434 Media Group',
-      companyUrl: 'https://434media.com',
-      description: [
-        'Maintaining and optimizing legacy backend systems written in python, ensuring system reliability and uptime across multiple client-facing products',
-        'Collaborating with frontend and design teams to implement new REST API endpoints, enhancing platform feature coverage'
-      ]
-    },
     {
       date: 'October 2023 - Present',
       location: 'Ithaca, NY',
-      title: 'Software Developer',
+      title: 'Machine Learning Engineer',
       company: 'Cornell University Unmanned Air Systems',
       companyUrl: 'https://cuair.org',
+      tools: 'Python, PyTorch, YOLO, SAHI, Gymnasium',
       description: [
-        'Developed a reinforcement learning agent in Gymnasium with Stable Baselines, achieving 99% target-hit accuracy in simulation; currently enhancing environmental physics to better reflect real-world UAV dynamics',
-        'Engineered an obstacle detection system for fixed-wing UAVs using LiDAR and DBSCAN clustering, improving real-time object detection and autonomous flight safety in constrained environments',
-        'Trained deep learning models (YOLO + SAHI) with transfer learning and synthetic data to detect and classify alphanumeric ground targets with 98% accuracy, enabling reliable autonomous mission scoring'
+        'Devised a 360 degree LiDAR-based obstacle detection system using DBSCAN clustering to enhance UAV flight safety',
+        'Developed a path-planning reinforcement learning agent in Gymnasium using Stable Baselines, achieving 99% task success',
+        'Trained YOLO + SAHI models with transfer learning to detect alphanumeric targets (98% accuracy)'
+      ]
+    },
+    {
+      date: 'May 2025 - September 2025',
+      location: 'San Antonio, TX',
+      title: 'Software Engineering Intern',
+      company: '434 Media Group',
+      companyUrl: 'https://434media.com',
+      tools: 'React.js, JavaScript, Python, Meta Graph API, Airtable API',
+      description: [
+        'Led the redesign of Digital Canvas using React.js and JavaScript, delivering 3 production-ready UI prototypes to leadership',
+        'Restructured legacy architecture while enhancing analytics with Meta Graph API + Google Analytics, modernizing CMS workflows and centralizing insights across 7+ managed sites',
+        'Automated sales lead generation with web scraping, ChatGPT API, and Airtable API, reducing research/data entry time by up to 70% through prospecting, email generation, and lead storage'
       ]
     },
     {
       date: 'May 2024 - May 2025',
       location: 'New York, NY',
-      title: 'Software Engineering Intern',
-      company: 'LinkedIn (Via Cornell ASCEND)',
+      title: 'Full Stack Engineer Intern',
+      company: 'LinkedIn',
       companyUrl: 'https://linkedin.com',
+      tools: 'React.js, Node.js, Python, Supabase, Whisper',
       description: [
-        'Built EchoAce, an on-demand behavioral interview simulator powered by LLMs, enabling users to practice spoken interview questions and receive personalized AI feedback across 99+ languages',
-        'Developed and optimized the transcription-to-feedback pipeline using OpenAI Whisper, a Python backend, and Supabase, reducing total response time by ~58% (60s → ~25s) to improve real-time usability',
-        'Engineered the interactive interview interface in React.js and Node.js, integrating dynamic question prompts and user data with backend APIs to generate LLM-driven evaluations, tested by 20+ users in MVP stage'
-      ]
-    },
-    {
-      date: 'August 2024 - May 2025',
-      location: 'Ithaca, NY',
-      title: 'Campus Director',
-      company: 'Thrive Scholars',
-      companyUrl: 'https://thrivescholars.org',
-      description: [
-        'Organized and led events for 15+ students, including resource tours, workshops, and wellness programs',
-        'Managed an event budget and handled all logistical aspects, from submitting proposals to completing post-event documentation, ensuring 100% compliance with organizational guidelines'
+        'Optimized an audio-to-transcription-to-feedback pipeline using OpenAI Whisper, Python backend, and Supabase, cutting average response latency by 58% (60s → 25s) and improving real-time usability for interview simulations',
+        'Designed an interactive interview interface in React.js and Node.js, simulating interviews and providing real-time LLM-driven feedback; tested with 20+ MVP users',
+        'Collaborated in 10 months of weekly code reviews and progress updates with senior LinkedIn engineers, receiving feedback on design decisions, debugging strategies, and scalable system practices'
       ]
     },
     {
       date: 'May 2024 - August 2024',
       location: 'New York, NY',
       title: 'Software Engineering Extern',
-      company: 'Citadel LLC',
-      companyUrl: 'https://citadel.com',
+      company: 'Citadel Securities',
+      companyUrl: 'https://www.citadelsecurities.com/',
+      tools: 'Python, Django, JavaScript, Yahoo Finance API, Gemini API',
       description: [
-        'Developed a full-stack stock comparison platform using Django, JavaScript, and Python, integrating Yahoo Finance APIs and Google Gemini AI to analyze 6 key indicators (SMA, EMA, RSI, etc.)',
-        'Delivered real-time buy/sell/hold signals and maximum profit scenarios through interactive, data-driven charts'
+        'Spearheaded a full-stack stock comparison platform using Django, JavaScript, and Python, integrating Yahoo Finance and Gemini AI APIs to analyze 6 key indicators (SMA, EMA, RSI, etc.) and deliver maximum profit scenarios',
+        'Completed 25+ hours/week of instructor-led data structures and algorithms workshops, alongside 10+ finance courses covering market structure, asset classes, hedge fund strategies, and quantitative modeling',
+        'Engaged with Citadel engineers and senior leadership through mentorship, project reviews, and talks focused on fintech'
       ]
-    }
+    },
   ];
+
+  // Intersection Observer for entry animations
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = parseInt(entry.target.dataset.index);
+          setVisibleItems(prev => new Set([...prev, index]));
+        }
+      });
+    }, observerOptions);
+
+    itemRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      itemRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
 
   return (
     <div className="timeline">
-      {experiences.map((experience, index) => (
-        <div key={index} className="timeline-item">
-          <div className="timeline-dot"></div>
-          <div className="timeline-content">
-            <div className="timeline-header">
-            <h3 className="timeline-title">{experience.title}</h3>
-              <span>, </span>
-              <a 
-                href={experience.companyUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="timeline-company"
-              >
-                {experience.company}
-              </a>
-            </div>
-            <div className="timeline-meta">
-              {experience.date} | {experience.location}
-            </div>
-            <div className="timeline-description">
-              {experience.description.map((bullet, i) => (
-                <p key={i}>{bullet}</p>
-              ))}
+      {experiences.map((experience, index) => {
+        const isVisible = visibleItems.has(index);
+
+        return (
+          <div
+            key={index}
+            ref={(el) => (itemRefs.current[index] = el)}
+            data-index={index}
+            className={`timeline-item ${isVisible ? 'timeline-item-visible' : 'timeline-item-entering'}`}
+          >
+            <div className="timeline-dot"></div>
+            <div className="timeline-content">
+              <div className="timeline-header">
+                <a 
+                  href={experience.companyUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="timeline-company"
+                >
+                  {experience.company}
+                </a>
+                <span>, </span>
+                <h3 className="timeline-title">{experience.title}</h3>
+              </div>
+              <div className="timeline-meta">
+                {experience.date} | {experience.location}
+              </div>
+              <div className="timeline-tools">
+                {experience.tools}
+              </div>
+              <div className="timeline-description">
+                {experience.description.map((bullet, i) => (
+                  <p key={i}>{bullet}</p>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

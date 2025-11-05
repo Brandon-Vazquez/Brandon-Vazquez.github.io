@@ -25,6 +25,11 @@ const Projects = () => {
     };
   });
   const [activeProjectId, setActiveProjectId] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return document.documentElement.classList.contains('dark') || 
+           localStorage.theme === 'dark' ||
+           (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  });
 
   useEffect(() => {
     // Hide welcome message after 5 seconds
@@ -38,6 +43,34 @@ const Projects = () => {
   useEffect(() => {
     localStorage.setItem('checkedProjects', JSON.stringify(checkedItems));
   }, [checkedItems]);
+
+  useEffect(() => {
+    // Listen for theme changes
+    const checkDarkMode = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+    };
+
+    // Check initial state
+    checkDarkMode();
+
+    // Listen for class changes on document element
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    // Also listen for storage changes (in case theme is changed in another tab)
+    const handleStorageChange = () => {
+      checkDarkMode();
+    };
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   const projectGithubUrls = {
     plane: null,
@@ -57,7 +90,7 @@ const Projects = () => {
     laptop: null
   };
 
-  const projectPopups = {
+  const getProjectPopups = () => ({
     plane: (
       <div>
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>Fixed Wing Obstacle Avoidance</h2>
@@ -87,7 +120,7 @@ const Projects = () => {
         <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', textAlign: 'left' }}>EchoAce</h2>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
           <div style={{ width: '20%' }}>
-            <ZoomableImage src="assets/echoace.png" alt="EchoAce" />
+            <ZoomableImage src={isDarkMode ? "assets/invert_echoace.png" : "assets/echoace.png"} alt="EchoAce" />
           </div>
         </div>
         <p style={{ fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '0.5rem' }}>
@@ -161,11 +194,11 @@ const Projects = () => {
         designed to automatically identify and classify alphanumeric targets during 
         autonomous flight missions, a critical capability for aerial target recognition.
         To improve performance on small or distant targets, I used SAHI to slice 
-        high-resolution images into overlapping patches, enhancing YOLO’s accuracy 
+        high-resolution images into overlapping patches, enhancing YOLO's accuracy 
         without compromising inference speed. I also leveraged transfer learning and 
         synthetic data generation to train the model for high precision in varied environments, 
         achieving over 98% classification accuracy. This project contributed significantly to 
-        CUAIR’s autonomous mission objectives and advanced our team’s use of deep learning in 
+        CUAIR's autonomous mission objectives and advanced our team's use of deep learning in 
         real-time aerial systems.
         </p>
       </div>
@@ -185,7 +218,16 @@ const Projects = () => {
       </div>
     ),
     // ...other projects
-  };
+  });
+
+  const projectPopups = getProjectPopups();
+
+  // Update popup content when dark mode changes if echoace is open
+  useEffect(() => {
+    if (isPopupOpen && activeProjectId === 'echoAce') {
+      setPopupContent(getProjectPopups().echoAce);
+    }
+  }, [isDarkMode, isPopupOpen, activeProjectId]);
 
   const infoContent = (
     <div style={{ textAlign: 'left' }}>
@@ -243,22 +285,22 @@ const Projects = () => {
       let projectId = null;
       
       if (objectName?.includes('plane')) {
-        setPopupContent(projectPopups.plane);
+        setPopupContent(getProjectPopups().plane);
         projectId = 'plane';
       } else if (objectName?.includes('echoace')) {
-        setPopupContent(projectPopups.echoAce);
+        setPopupContent(getProjectPopups().echoAce);
         projectId = 'echoAce';
       } else if (objectName?.includes('arcade_machine')) {
-        setPopupContent(projectPopups.arcade);
+        setPopupContent(getProjectPopups().arcade);
         projectId = 'arcade';
       } else if (objectName?.includes('stock_chart')) {
-        setPopupContent(projectPopups.stockMarket);
+        setPopupContent(getProjectPopups().stockMarket);
         projectId = 'stockMarket';
       } else if (objectName?.includes('object_camera')) {
-        setPopupContent(projectPopups.camera);
+        setPopupContent(getProjectPopups().camera);
         projectId = 'camera';
       } else if (objectName?.includes('object_laptop')) {
-        setPopupContent(projectPopups.laptop);
+        setPopupContent(getProjectPopups().laptop);
         projectId = 'laptop';
       }
 
@@ -271,7 +313,7 @@ const Projects = () => {
   };
 
   const handleChecklistItemClick = (projectId) => {
-    setPopupContent(projectPopups[projectId]);
+    setPopupContent(getProjectPopups()[projectId]);
     setActiveProjectId(projectId);
     setIsPopupOpen(true);
     setCheckedItems(prev => ({ ...prev, [projectId]: true }));
