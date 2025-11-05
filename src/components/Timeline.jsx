@@ -9,6 +9,17 @@ const Timeline = () => {
 
   const experiences = [
     {
+      date: 'August 2025 - Present',
+      location: 'Ithaca, NY',
+      title: 'Teaching Assistant',
+      company: 'Cornell Ann S. Bowers College of Computing and Information Science',
+      companyUrl: 'https://www.cis.cornell.edu/',
+      tools: 'Teaching, Mentoring, Debugging, Recitations, Office Hours',
+      description: [
+        'Supporting 150+ students in CS 1112 (Introduction to Computing) by leading recitations, holding office hours, and collaborating with staff to enhance course materials'
+      ]
+    },
+    {
       date: 'October 2023 - Present',
       location: 'Ithaca, NY',
       title: 'Machine Learning Engineer',
@@ -24,7 +35,7 @@ const Timeline = () => {
     {
       date: 'May 2025 - September 2025',
       location: 'San Antonio, TX',
-      title: 'Software Engineering Intern',
+      title: 'Software Engineer Intern',
       company: '434 Media Group',
       companyUrl: 'https://434media.com',
       tools: 'React.js, JavaScript, Python, Meta Graph API, Airtable API',
@@ -37,7 +48,7 @@ const Timeline = () => {
     {
       date: 'May 2024 - May 2025',
       location: 'New York, NY',
-      title: 'Full Stack Engineer Intern',
+      title: 'Full Stack Engineer Consultant',
       company: 'LinkedIn',
       companyUrl: 'https://linkedin.com',
       tools: 'React.js, Node.js, Python, Supabase, Whisper',
@@ -48,9 +59,21 @@ const Timeline = () => {
       ]
     },
     {
+      date: 'August 2024 - May 2025',
+      location: 'Ithaca, NY',
+      title: 'Campus Director',
+      company: 'Thrive Scholars',
+      companyUrl: 'https://www.thrivescholars.org/',
+      tools: 'Communication, Organizational Leadership, Event Planning, Project Management, Budget Management',
+      description: [
+        'Managed a cohort of 15+ scholars, spearheading events and programming while handling logistics and outreach using Google Sheets and Notion',
+        'Coordinated event budgets, proposals, and post-event reporting, achieving 100% compliance with operational guidelines',
+      ]
+    },
+    {
       date: 'May 2024 - August 2024',
       location: 'New York, NY',
-      title: 'Software Engineering Extern',
+      title: 'Software Engineer Extern',
       company: 'Citadel Securities',
       companyUrl: 'https://www.citadelsecurities.com/',
       tools: 'Python, Django, JavaScript, Yahoo Finance API, Gemini API',
