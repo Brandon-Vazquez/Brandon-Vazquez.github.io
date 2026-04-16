@@ -140,6 +140,43 @@
   opacity: 0.8;
 }
 
+button.email-copy-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5rem;
+}
+
+.clipboard-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  z-index: 1100;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--background);
+  background-color: var(--text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+.clipboard-toast.clipboard-toast--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dark .clipboard-toast {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
 .linkedin-icon {
   width: 24px;
   height: 24px;

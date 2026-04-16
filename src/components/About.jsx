@@ -10,10 +10,8 @@ import {
   SiNodedotjs,
   SiPython,
   SiGit,
-  SiGithub,
   SiDocker,
   SiTypescript,
-  SiNextdotjs,
   SiJupyter,
   SiOcaml,
   SiPytorch,
@@ -22,12 +20,18 @@ import {
   SiNumpy,
   SiPandas,
   SiFlask,
-  SiBootstrap,
   SiSupabase,
-  SiOpenai
+  SiOpenai,
+  SiRust,
+  SiPostgresql,
+  SiAmazonwebservices,
+  SiGooglecloud,
+  SiFigma,
+  SiGnubash
 } from 'react-icons/si';
 import { FaJava, FaCode } from 'react-icons/fa';
-import { BiLineChart, BiBrain } from 'react-icons/bi';
+import { BiLineChart } from 'react-icons/bi';
+import { Cpu } from 'lucide-react';
 import './About.css';
 
 const About = () => {
@@ -37,32 +41,35 @@ const About = () => {
       { icon: <SiJavascript />, name: 'JavaScript' },
       { icon: <SiTypescript />, name: 'TypeScript' },
       { icon: <SiHtml5 />, name: 'HTML' },
-      { icon: <SiCss3 />, name: 'CSS' },
-      { icon: <SiNextdotjs />, name: 'Next.js' },
-      { icon: <SiBootstrap />, name: 'Bootstrap' }
+      { icon: <SiCss3 />, name: 'CSS' }
     ],
     backend: [
       { icon: <SiNodedotjs />, name: 'Node.js' },
       { icon: <SiPython />, name: 'Python' },
       { icon: <FaJava />, name: 'Java' },
-      { icon: <SiOcaml />, name: 'OCaml' },
       { icon: <FaCode />, name: 'C' },
-      { icon: <SiFlask />, name: 'Flask' }
+      { icon: <SiOcaml />, name: 'OCaml' },
+      { icon: <SiRust />, name: 'Rust' },
+      { icon: <SiPostgresql />, name: 'SQL' },
+      { icon: <SiFlask />, name: 'Flask' },
+      { icon: <Cpu className="hexagon-lucide-icon" aria-hidden />, name: 'Harmony' }
     ],
     tools: [
-      { icon: <SiGit />, name: 'Git' },
-      { icon: <SiGithub />, name: 'GitHub' },
-      { icon: <SiDocker />, name: 'Docker' },
-      { icon: <SiJupyter />, name: 'Jupyter' },
-      { icon: <SiSupabase />, name: 'Supabase' },
-      { icon: <SiOpenai />, name: 'Whisper' },
       { icon: <SiPytorch />, name: 'PyTorch' },
       { icon: <SiOpencv />, name: 'OpenCV' },
       { icon: <SiScikitlearn />, name: 'Scikit-learn' },
       { icon: <SiNumpy />, name: 'NumPy' },
       { icon: <SiPandas />, name: 'Pandas' },
       { icon: <BiLineChart />, name: 'Matplotlib' },
-      { icon: <BiBrain />, name: 'Stable Baselines' }
+      { icon: <SiGit />, name: 'Git' },
+      { icon: <SiDocker />, name: 'Docker' },
+      { icon: <SiGnubash />, name: 'Unix shell' },
+      { icon: <SiJupyter />, name: 'Jupyter' },
+      { icon: <SiSupabase />, name: 'Supabase' },
+      { icon: <SiAmazonwebservices />, name: 'AWS' },
+      { icon: <SiGooglecloud />, name: 'GCP' },
+      { icon: <SiFigma />, name: 'Figma' },
+      { icon: <SiOpenai />, name: 'Whisper' }
     ]
   };
 
@@ -76,7 +83,7 @@ const About = () => {
   const renderSkill = (skill, index) => (
     <Hexagon key={index}>
       <div className={`hexagon-content hexagon-${skill.category}`}>
-        <div className="hexagon-icon">{skill.icon}</div>
+        <div className="hexagon-icon" aria-hidden="true">{skill.icon}</div>
         <div className="hexagon-name">{skill.name}</div>
       </div>
     </Hexagon>
@@ -89,35 +96,107 @@ const About = () => {
         {/* History Section */}
         <section className="about-section">
           <h2 className="section-title">About Me</h2>
-          <div className="history-content">
-            <p>
-              My name is Brandon Vazquez Munoz, and I am a first-generation 
-              American and college student studying Computer Science at 
-              Cornell University. My family is from Jalisco, Mexico, and that 
-              heritage has shaped both my values and my perspective. I grew 
-              up working construction, primarily flooring, which taught me 
-              the value of patience, hard work, and learning by doing. These 
-              are lessons I carry into every environment, whether I am writing 
-              code or collaborating with a team.
-            </p>
-            <p>
-              Outside of academics and engineering, I try to stay active, whether 
-              that's playing basketball, going to the gym, or just making time to 
-              move during a busy week. I have always enjoyed trying new things 
-              and being part of a team, even in a recreational setting. In my 
-              downtime, I am an avid consumer of movies and television.
-            </p>
-            <p>
-              I also enjoy working with my hands, especially when it comes to building
-               computers. Through the Cornell Computer Reuse Association, I have been 
-               able to combine that interest with service, helping refurbish and 
-               distribute technology to organizations in need.
-            </p>
-            <p>
-              At the core of everything I do is a genuine interest in building, not 
-              just systems, but habits, connections, and experiences that carry 
-              meaning beyond a screen.
-            </p>
+          <div className="about-me-layout">
+            <div className="history-content">
+              <p>
+                My name is Brandon Vazquez Munoz, and I am a first-generation 
+                American and college student studying Computer Science at 
+                Cornell University. My family is from Jalisco, Mexico, and that 
+                heritage has shaped both my values and my perspective. I grew 
+                up working construction, primarily flooring, which taught me 
+                the value of patience, hard work, and learning by doing. These 
+                are lessons I carry into every environment, whether I am writing 
+                code or collaborating with a team.
+              </p>
+              <p>
+                Outside of academics and engineering, I try to stay active, whether 
+                that's playing basketball, going to the gym, or just making time to 
+                move during a busy week. I have always enjoyed trying new things 
+                and being part of a team, even in a recreational setting. In my 
+                downtime, I am an avid consumer of movies and television.
+              </p>
+              <p>
+                I also enjoy working with my hands, especially when it comes to building
+                 computers. Through the Cornell Computer Reuse Association, I have been 
+                 able to combine that interest with service, helping refurbish and 
+                 distribute technology to organizations in need.
+              </p>
+              <p>
+                At the core of everything I do is a genuine interest in building, not 
+                just systems, but habits, connections, and experiences that carry 
+                meaning beyond a screen.
+              </p>
+            </div>
+            <aside
+              className="about-collage"
+              aria-label="Personal photos"
+            >
+              <div className="about-collage-grid">
+                {/* Replace each slot with <img src="assets/your-photo.jpg" alt="..." /> or background-image */}
+                {[1, 2, 3, 4, 5, 6].map((n) => (
+                  <div
+                    key={n}
+                    className="about-collage-slot"
+                    role="img"
+                    aria-label={`Photo placeholder ${n}`}
+                  >
+                    <span className="about-collage-slot-label">{n}</span>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        {/* Education */}
+        <section className="about-section">
+          <h2 className="section-title">Education</h2>
+          <div className="education-card">
+            <div className="education-visual" aria-hidden="true">
+              <div className="education-orbit" />
+              <img
+                className="education-logo"
+                src="assets/cornell_logo.png"
+                alt=""
+              />
+            </div>
+            <div className="education-body">
+              <p className="education-school">
+                <a
+                  href="https://www.engineering.cornell.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="education-school-link"
+                >
+                  Cornell University
+                </a>
+                <span className="education-school-sub">
+                  , College of Engineering
+                </span>
+              </p>
+              <p className="education-degree">
+                B.S. Computer Science · Ithaca, NY
+              </p>
+              <p className="education-dates">August 2023 – May 2027 (expected)</p>
+              <div className="education-courses">
+                <span className="education-courses-label">Selected coursework</span>
+                <ul className="education-course-tags">
+                  {[
+                    'Analysis of Algorithms',
+                    'Operating Systems',
+                    'Computer Networks',
+                    'Machine Learning',
+                    'Computer System Organization',
+                    'OOP & Data Structures',
+                    'Probability & Statistics I & II'
+                  ].map((course) => (
+                    <li key={course} className="education-course-tag">
+                      {course}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -139,9 +218,11 @@ const About = () => {
             </div>
           </div>
           <div className="skills-container">
+            {/* Keep size in sync with --hex-cell in About.css (.skills-container) */}
             <Honeycomb
-              columns={6}
-              size={80}
+              columns={8}
+              size={66}
+              gap={3}
               items={allSkills}
               renderItem={renderSkill}
             />

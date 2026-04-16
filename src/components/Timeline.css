@@ -1,6 +1,7 @@
 .timeline {
   position: relative;
-  max-width: 850px;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem 0;
   perspective: 1000px;
@@ -22,39 +23,64 @@
 
 .timeline-item {
   position: relative;
-  margin-bottom: 4rem;
+  margin-bottom: 1.25rem;
   padding-left: 50px;
   transition: transform 0.6s ease-out, opacity 0.6s ease-out;
   transform-origin: center;
 }
 
-/* Entry animation - items start far away */
 .timeline-item-entering {
   transform: scale(0.8) translateY(50px);
   opacity: 0.3;
 }
 
-/* Visible state - items are fully visible */
 .timeline-item-visible {
   transform: scale(1) translateY(0);
   opacity: 1;
 }
 
-/* Waterfall effect - stagger animations */
-.timeline-item:nth-child(1) { transition-delay: 0ms; }
-.timeline-item:nth-child(2) { transition-delay: 50ms; }
-.timeline-item:nth-child(3) { transition-delay: 100ms; }
-.timeline-item:nth-child(4) { transition-delay: 150ms; }
+.timeline-item:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.timeline-item:nth-child(2) {
+  transition-delay: 50ms;
+}
+
+.timeline-item:nth-child(3) {
+  transition-delay: 100ms;
+}
+
+.timeline-item:nth-child(4) {
+  transition-delay: 150ms;
+}
+
+.timeline-item:nth-child(5) {
+  transition-delay: 200ms;
+}
+
+.timeline-item:nth-child(6) {
+  transition-delay: 250ms;
+}
 
 .timeline-dot {
   position: absolute;
   left: 12px;
-  top: 0;
+  top: 1.25rem;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: #0A66C2;
   border: 4px solid var(--background);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline-item-expanded .timeline-dot {
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.25);
+}
+
+.dark .timeline-item-expanded .timeline-dot {
+  box-shadow: 0 0 0 3px rgba(184, 98, 77, 0.35);
 }
 
 .dark .timeline-dot {
@@ -65,30 +91,175 @@
 .timeline-content {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(3px);
-  padding: 2rem;
+  padding: 0;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: left;
-  transition: all 0.3s ease;
-  will-change: transform;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
 .dark .timeline-content {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.timeline-content:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+.timeline-item-expanded .timeline-content {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-.dark .timeline-content:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+.dark .timeline-item-expanded .timeline-content {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* Summary: everything except description bullets (bullets expand below) */
+.timeline-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.35rem 1.25rem 1.35rem 1.5rem;
+  /* Divider always visible (border on panel-inner was clipped when collapsed) */
+  border-bottom: 2px solid rgba(10, 102, 194, 0.2);
+}
+
+.dark .timeline-summary {
+  border-bottom-color: rgba(184, 98, 77, 0.2);
+}
+
+.timeline-summary-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-expand-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.4rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(10, 102, 194, 0.12);
+  color: #0a66c2;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.timeline-expand-btn:hover {
+  background: rgba(10, 102, 194, 0.2);
+}
+
+.timeline-expand-btn:focus-visible {
+  outline: 2px solid #0a66c2;
+  outline-offset: 2px;
+}
+
+.dark .timeline-expand-btn {
+  background: rgba(184, 98, 77, 0.2);
+  color: #e07a65;
+}
+
+.dark .timeline-expand-btn:hover {
+  background: rgba(184, 98, 77, 0.32);
+}
+
+.dark .timeline-expand-btn:focus-visible {
+  outline-color: #e07a65;
+}
+
+.timeline-chevron {
+  transition: transform 0.3s ease;
+}
+
+.timeline-chevron-open {
+  transform: rotate(180deg);
+}
+
+/* Expanded: experience description bullets only */
+.timeline-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.timeline-panel-open {
+  grid-template-rows: 1fr;
+}
+
+.timeline-panel-inner {
+  overflow: hidden;
+  min-height: 0;
+  padding: 0 1.5rem 1.35rem;
 }
 
 .timeline-header {
-  margin-bottom: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.timeline-header-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0;
+  row-gap: 0.25rem;
+}
+
+.timeline-company {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  max-width: 100%;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0a66c2;
+  margin: 0;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-title-sep {
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  /* Space after comma (flex gap is 0 on this row) */
+  padding-right: 0.28em;
+}
+
+.timeline-company-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+.timeline-company-logo--wide {
+  width: auto;
+  min-width: 2rem;
+  padding-right: 0.1rem;
+}
+
+.timeline-company-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Horizontal / wide marks (e.g. 434) — keeps height aligned with the square slot */
+.timeline-company-logo-img--wide-brand {
+  width: auto;
+  height: 100%;
+  max-width: 5.25rem;
+  max-height: 2rem;
+  object-fit: contain;
+}
+
+.timeline-company-name {
+  min-width: 0;
 }
 
 .timeline-title {
@@ -96,48 +267,70 @@
   font-weight: 600;
   color: var(--text);
   margin: 0;
-  display: inline;
-}
-
-.timeline-company {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #0A66C2;
-  margin: 0;
-  display: inline;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
+  flex: 0 1 auto;
 }
 
 .timeline-company:hover {
   opacity: 0.8;
+  text-decoration: underline;
 }
 
 .dark .timeline-company {
   color: #B8624D;
 }
 
-.timeline-meta {
+.timeline-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem 0.65rem;
+  margin: 0;
   font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.timeline-meta {
+  flex-shrink: 0;
+  color: var(--text);
+  opacity: 0.82;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.timeline-meta-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.45rem;
+  min-width: 0;
+  flex: 1 1 12rem;
+}
+
+.timeline-meta-sep {
+  flex-shrink: 0;
   color: var(--text);
   opacity: 0.7;
-  margin: 0.5rem 0;
+  font-weight: 600;
+  font-size: 1.35em;
+  line-height: 1;
+  user-select: none;
 }
 
 .timeline-description {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   line-height: 1.6;
   color: var(--text);
   opacity: 0.9;
   margin: 0;
+  padding-top: 0.85rem;
 }
 
 .timeline-tools {
-  font-size: 0.95rem;
+  min-width: 0;
   font-style: italic;
   color: var(--text);
-  opacity: 0.7;
-  margin: 0.5rem 0 1rem 0;
+  opacity: 0.68;
+  margin: 0;
 }
 
 .timeline-description p {
@@ -152,19 +345,52 @@
   left: 0;
 }
 
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   .timeline-item {
     transition: none;
   }
-  
+
   .timeline-item-entering {
     transform: none;
     opacity: 1;
   }
-  
+
+  .timeline-panel {
+    transition: none;
+  }
+
+  .timeline-chevron {
+    transition: none;
+  }
+
+  .timeline-chevron-open {
+    transform: rotate(180deg);
+  }
+
+  .timeline-expand-btn {
+    transition: none;
+  }
+
+  .timeline-dot {
+    transition: none;
+  }
+
   .timeline-content {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+}
+
+@media (min-width: 1200px) {
+  .timeline-summary {
+    padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+  }
+
+  .timeline-panel-inner {
+    padding: 0 1.75rem 1.5rem;
+  }
+
+  .timeline-description {
+    font-size: 1.1rem;
   }
 }
 
@@ -175,21 +401,23 @@
 
   .timeline-item {
     padding-left: 40px;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
 
   .timeline-dot {
     left: 7px;
     width: 16px;
     height: 16px;
+    top: 1.1rem;
   }
 
   .timeline-title,
+  .timeline-title-sep,
   .timeline-company {
     font-size: 1.2rem;
   }
 
-  .timeline-meta {
+  .timeline-meta-row {
     font-size: 0.85rem;
   }
 
@@ -197,11 +425,11 @@
     font-size: 1rem;
   }
 
-  .timeline-tools {
-    font-size: 0.85rem;
+  .timeline-summary {
+    padding: 1.1rem 1rem 1.1rem 1.15rem;
   }
 
-  .timeline-content {
-    padding: 1.5rem;
+  .timeline-panel-inner {
+    padding: 0 1.15rem 1.1rem;
   }
 }

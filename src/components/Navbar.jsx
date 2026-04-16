@@ -45,6 +45,14 @@ const Navbar = () => {
                         <Link to="/projects" className={`nav-link ${location.pathname === '/projects' ? 'active' : ''}`}>
                             PROJECTS
                         </Link>
+                        <a
+                            href="/assets/Brandon_Vazquez-Munoz_Resume.pdf"
+                            className="nav-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            RESUME
+                        </a>
                     </nav>
                     <button
                         className={`theme-switcher-grid ${isDarkTheme ? 'night-theme' : ''}`}
